@@ -1,0 +1,23 @@
+float sensorValue = 0;
+float sensorVoltage = 0;
+float R=1100000;
+
+void setup() {
+  pinMode(15,INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  double  sensorValue= analogRead(15);
+  for (int i=0;i<=5;i++)
+sensorValue = 0.7* sensorValue + 0.3* analogRead(15);
+sensorVoltage = sensorValue * 5 / 4095;
+float R1=sensorVoltage*R/5;
+float R2=R-R1;
+
+Serial.println(sensorValue);
+Serial.println(sensorVoltage);
+Serial.println(R1);
+Serial.println(R2);
+delay(500);
+  }
